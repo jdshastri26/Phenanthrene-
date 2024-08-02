@@ -1,0 +1,59 @@
+1) define the molecular structure 
+
+import numpy as np
+
+# Define 3D coordinates for phenanthrene atoms
+# This is a simplified example with hypothetical coordinates
+# In practice, you would obtain these from a file or computational chemistry software
+phenanthrene_coords = np.array([
+    [0.0, 0.0, 0.0],  # C1
+    [1.4, 0.0, 0.0],  # C2
+    [2.1, 1.2, 0.0],  # C3
+    [3.5, 1.2, 0.0],  # C4
+    [4.2, 0.0, 0.0],  # C5
+    [3.5, -1.2, 0.0], # C6
+    [2.1, -1.2, 0.0], # C7
+    [1.4, 2.4, 0.0],  # C8
+    [2.8, 2.4, 0.0],  # C9
+    [4.2, 2.4, 0.0],  # C10
+    [5.6, 2.4, 0.0],  # C11
+    [5.6, 0.0, 0.0],  # C12
+    [4.9, -1.2, 0.0], # C13
+    [3.5, -2.4, 0.0], # C14
+    [2.1, -2.4, 0.0], # C15
+    [0.7, -1.2, 0.0]  # C16
+])
+
+# Print the coordinates
+print("Phenanthrene Atomic Coordinates:")
+print(phenanthrene_coords)
+
+
+
+2) calculat the pairwise distances 
+# Calculate pairwise distance matrix
+distances = np.sqrt(np.sum((phenanthrene_coords[:, np.newaxis, :] - phenanthrene_coords[np.newaxis, :, :]) ** 2, axis=-1))
+
+# Print the pairwise distance matrix
+print("Pairwise Distance Matrix:")
+print(distances)
+
+
+3) visualize the distance matrix 
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Plot a heatmap of the distance matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(distances, annot=True, cmap='viridis')
+plt.xlabel('Atom Index')
+plt.ylabel('Atom Index')
+plt.title('Pairwise Distances Between Atoms in Phenanthrene')
+plt.show()
+
+
+summary 
+Defining the molecular structure: Creating a NumPy array to store the 3D coordinates of the atoms.
+Calculating pairwise distances: Using NumPy to compute the distances between each pair of atoms.
+Visualizing the distance matrix: Using matplotlib and seaborn to plot the distance matrix as a heatmap.
